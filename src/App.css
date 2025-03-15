@@ -5,13 +5,6 @@
 
 .Background {
   position: fixed;
-  background: radial-gradient(
-    71.43% 62.3% at 46.43% 36.43%,
-    rgba(18, 229, 229, 0) 15%,
-    rgba(239, 155, 255, 0.3) 56.35%,
-    #ff6448 100%
-  );
-  box-shadow: 0px 12.93px 28.74px 0px #ffd28db2 inset;
   border-radius: 50%;
   width: 200vw;
   height: 200vw;
@@ -26,7 +19,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 20px;
 }
 
 text {
@@ -116,4 +110,68 @@ text {
   font-size: 12px;
   margin: 5px;
   color: rgba(255, 255, 255, 0.65);
+}
+
+.button {
+  padding: 10px 20px;
+  background: #ff6448;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+}
+.active {
+  background: #4caf50;
+}
+.Calculator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.Display {
+  width: 300px;
+  height: 60px;
+  background: #333;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-size: 24px;
+}
+
+.Buttons {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.calculator-button {
+  width: 50px;
+  height: 50px;
+  background: #444;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.calculator-button:active {
+  background: #666;
+}
+
+.scientific-button {
+  background: #555;
+}
+
+.scientific-button:active {
+  background: #777;
 }
