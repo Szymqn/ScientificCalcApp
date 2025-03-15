@@ -1,6 +1,38 @@
 :root {
-  background-color: #000;
-  --color-text: #fff;
+  --background-color: #121212;
+  --color-text: #e0e0e0;
+  --color-primary: #6200ea;
+  --color-secondary: #03dac6;
+  --color-accent: #bb86fc;
+  --color-button: #333;
+  --color-button-active: #555;
+  --color-display: #1f1f1f;
+  --color-display-text: #ffffff;
+
+  /* New modern variables */
+  --color-number: #2d2d2d;
+  --color-number-hover: #3d3d3d;
+  --color-operation: #4a4a4a;
+  --color-operation-hover: #5a5a5a;
+  --color-function: #3a1f75;
+  --color-function-hover: #4a2f85;
+  --color-equals: #4e1d9e;
+  --color-equals-hover: #5e2dae;
+  --border-radius: 12px;
+  --button-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --display-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  --transition-speed: 0.2s;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--color-text);
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .Background {
@@ -11,6 +43,9 @@
   top: -60vw;
   left: -14.27vw;
   transform: rotate(15.25deg);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  opacity: 0.7;
+  z-index: -1;
 }
 
 .App {
@@ -19,61 +54,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding-top: 20px;
+  justify-content: center;
+  padding: 20px;
 }
 
 text {
   color: var(--color-text);
-}
-
-.Banner {
-  flex: 5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-}
-
-.Logo {
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 8px;
-}
-
-.Logo--react {
-  width: 100px;
-  height: 100px;
-  animation: Logo--spin infinite 20s linear;
-}
-
-.Logo--lynx {
-  width: 100px;
-  height: 100px;
-  animation: Logo--shake infinite 0.5s ease;
-}
-
-@keyframes Logo--spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes Logo--shake {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.9);
-  }
-  100% {
-    transform: scale(1);
-  }
 }
 
 .Content {
@@ -83,95 +69,171 @@ text {
   justify-content: center;
 }
 
-.Arrow {
-  width: 24px;
-  height: 24px;
-}
-
-.Title {
-  font-size: 36px;
-  font-weight: 700;
-}
-
-.Subtitle {
-  font-style: italic;
-  font-size: 22px;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.Description {
-  font-size: 20px;
-  color: rgba(255, 255, 255, 0.85);
-  margin: 15rpx;
-}
-
-.Hint {
-  font-size: 12px;
-  margin: 5px;
-  color: rgba(255, 255, 255, 0.65);
-}
-
-.button {
-  padding: 10px 20px;
-  background: #ff6448;
-  color: white;
-  border-radius: 10px;
-  text-align: center;
-}
-.active {
-  background: #4caf50;
-}
 .Calculator {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
+  background: rgba(25, 25, 25, 0.95);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  max-width: 100%;
+  width: 380px;
 }
 
-.Display {
-  width: 300px;
-  height: 60px;
-  background: #333;
-  color: white;
+.DisplayContainer {
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  background: var(--color-display);
+  box-shadow: var(--display-shadow);
+}
+
+.History {
+  width: 100%;
+  height: 24px;
+  padding: 8px 16px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  font-size: 24px;
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.Buttons {
+.History text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.Display {
+  width: 100%;
+  height: 60px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.Display text {
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--color-display-text);
+}
+
+.ButtonsContainer {
+  width: 100%;
+}
+
+.ButtonsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ScientificSection {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.MainSection {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 8px;
+}
+
+.ControlSection {
+  display: grid;
+  flex-wrap: wrap;
+  gap: 1px;
+  margin-bottom: 150px;
+  grid-template-columns: repeat(2, 0.5fr);
+}
+
+.NumberPad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px 64px;
+  margin-right: 180px;
+}
+
+.OperationsSection {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 5px;
+  margin-bottom: 20px;
+  margin-top: -160px;
 }
 
 .calculator-button {
-  width: 50px;
   height: 50px;
-  background: #444;
-  color: white;
+  width: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   cursor: pointer;
-  font-size: 18px;
+  transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  box-shadow: var(--button-shadow);
 }
 
-.calculator-button:active {
-  background: #666;
+.calculator-button text {
+  font-size: 16px;
+  font-weight: 500;
 }
 
-.scientific-button {
-  background: #555;
+.number-button {
+  background-color: var(--color-number);
 }
 
-.scientific-button:active {
-  background: #777;
+.number-button:active {
+  background-color: var(--color-number-hover);
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.operation-button {
+  background-color: var(--color-operation);
+}
+
+.operation-button:active {
+  background-color: var(--color-operation-hover);
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.function-button {
+  background-color: var(--color-function);
+}
+
+.function-button:active {
+  background-color: var(--color-function-hover);
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.equals-button {
+  background-color: var(--color-equals);
+  height: 125%;
+  width: 200%;
+}
+
+.equals-button:active {
+  background-color: var(--color-equals-hover);
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.zero-button {
+  flex: 2 1 auto;
+}
+
+.NumberPad .number-button {
+  height: 60px; 
+  width: 60px;  
+}
+
+.MainSection .operation-button {
+  height: 60px;
+  width: 60px;  
 }
