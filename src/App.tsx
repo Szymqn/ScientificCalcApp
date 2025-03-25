@@ -92,8 +92,20 @@ export function App() {
       case "e":
         setDisplay((prev) => prev + Math.E.toString())
         break
+      // case "+":
+      //   setDisplay((prev) => prev + "+")
+      //   break
+      // case "-":
+      //   setDisplay((prev) => prev + "-")
+      //   break
+      // case "x":
+      //   setDisplay((prev) => prev + "*")
+      //   break
+      // case "/":
+      //   setDisplay((prev) => prev + "/")
+      //   break
       default:
-        setDisplay((prev) => prev + value)
+        setDisplay((prev) => prev + value);
         break
     }
   }
@@ -105,8 +117,9 @@ export function App() {
 
   const handleCalculate = () => {
     try {
+      const sanitizedDisplay = display.replace(/x/g, "*");
       setHistory(display)
-      setDisplay(eval(display).toString())
+      setDisplay(eval(sanitizedDisplay).toString())
     } catch {
       setDisplay("Error")
     }
@@ -146,7 +159,7 @@ export function App() {
                 <text>{history}</text>
               </view>
               <view className="Display">
-                <text>{display || "0"}</text>
+              <text className="single-line-display">{display || "0"}</text>
               </view>
             </view>
 
